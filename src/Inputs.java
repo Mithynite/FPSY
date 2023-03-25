@@ -2,7 +2,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
 
-public class Inputs implements KeyListener {
+public class Inputs implements KeyListener{
     private int horizontalMovement;
     private int vertiqalMovement;
     private boolean up;
@@ -48,19 +48,22 @@ public class Inputs implements KeyListener {
         switch (e.getKeyCode()){
             case KeyEvent.VK_W:
                 setVertiqalMovement(-player.getSpeed());
-                System.out.println("Key Pressed");
+                System.out.println("W Pressed");
                 up = true;
                 break;
             case KeyEvent.VK_A:
                 setHorizontalMovement(-player.getSpeed());
+                System.out.println("A Pressed");
                 left = true;
                 break;
             case KeyEvent.VK_S:
                 setVertiqalMovement(player.getSpeed());
+                System.out.println("S Pressed");
                 down = true;
                 break;
             case KeyEvent.VK_D:
                 setHorizontalMovement(player.getSpeed());
+                System.out.println("D Pressed");
                 right = true;
                 break;
         }

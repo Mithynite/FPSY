@@ -14,22 +14,19 @@ public class Window extends JFrame {
         return height;
     }
     public Window() throws HeadlessException{}
-    public Window(Player panel) throws HeadlessException, IOException {
-    initialize(panel);
+    public Window(Player gamePanel) throws HeadlessException {
+        initialize(gamePanel);
         /*ImageIcon icon = new ImageIcon(""); TODO
         frame.setIconImage(icon.getImage());*/
     }
-    public void initialize(Player gamePanel) throws IOException {
-        gamePanel = new Player();
+    public void initialize(Player gamePanel) {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setSize(width, height);
         this.setTitle("Game");
         this.setResizable(false);
         this.add(gamePanel);
-        gamePanel.requestFocus();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-        //this.addKeyListener(input);
     }
 }
