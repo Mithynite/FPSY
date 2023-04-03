@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0756e3e-bdfb-4eee-8ff0-665c520dcf98" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GetImages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NewPictures/Old_man.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NewPictures/Old_man_idle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NewPictures/Old_man_walk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlaceSetUp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PlacesManaging.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SharedMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Inputs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Inputs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/ManageTheLevels.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Game/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Game/Window.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Inputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Inputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ManageTheLevels.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
-    </list>
+    <list default="true" id="f00fb9ad-798a-4657-a98d-36e19b6cc93f" name="Changes" comment="Commit 3 (I guess...)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +17,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

@@ -8,7 +8,16 @@ public class Game implements Runnable, SharedMethods { //extends Thread
     private PlacesManaging manage;
     private Thread gameLoop;
     private final int setFPS = 120;
-    public Game() {
+    /*public Game() throws IOException {
+        setExternalClasses();
+        manage = new PlacesManaging();
+        player = new Player();
+        Window gameWindow = new Window(player);
+        //player.requestFocus();
+        startGame();
+    }*/
+
+   public Game() {
         setExternalClasses();
         manage = new PlacesManaging();
         gameP = new GamePanel(this);
