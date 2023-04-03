@@ -1,70 +1,97 @@
-import javax.imageio.ImageIO;
-import javax.swing.*;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.nio.BufferOverflowException;
-import java.util.Objects;
-public class Player extends JPanel implements SharedMethods{
-    private final String idleAnimationAddress = "NewPictures/Old_man_idle.png";
-    private final String walkAnimationAddress = "NewPictures/Old_man_walk.png";
-    private BufferedImage idle, walk;
-    private BufferedImage[] animationStoreIdle;
-    private BufferedImage[] animationStoreWalk;
-    private BufferedImage lastPlayerView;
-    private Inputs movement = new Inputs();
-    private int posiotionX = 200;
+
+public class Player implements SharedMethods{
+    private final String idleAnimationAddress = "Pictures/Idle_Walk/Woodcutter_idle.png";
+    private final String walkAnimationAddress = "Pictures/Idle_Walk/Woodcutter_walk.png";
+    private final GamePanel gamePanel = new GamePanel();
+    AnimationPlayer idle = new AnimationPlayer(25, 4, idleAnimationAddress, 0);
+    AnimationPlayer walk = new AnimationPlayer(10, 6, walkAnimationAddress, 0);
+    private int posiotionX = 800;
     private int posiotionY = 200;
-    private int sizeX = 500;
-    private int sizeY = 70;
     private int speed = 3;
-    Window window = new Window();
+    private int sizeX = 100;
+    private int sizeY = 120;
+    private boolean moving;
+    private boolean right, left, up, down;
+    private boolean windowActivation;
 
-    public int getSpeed() {
-        return speed;
+    public void setWindowActivation(boolean windowActivation) {
+        this.windowActivation = windowActivation;
     }
 
-    public Player() throws IOException {
-        this.setBounds(0, 0, window.getWidth(), window.getHeight());
-        addKeyListener(movement);
-        importImages();
-        animationsLoad();
-        //lastPlayerView = playerLeft;
-    }
-    public void importImages() throws IOException {
-        idle = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(idleAnimationAddress)));
-        walk = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(walkAnimationAddress)));
-    }
-    public void animationsLoad() throws IOException {
-        animationStoreIdle = new BufferedImage[4];
-        animationStoreWalk = new BufferedImage[6];
-
-       for(int a = 0; a < animationStoreIdle.length; a++)
-            animationStoreIdle[a] = idle.getSubimage(a*48, 0, 24, 48); //h48 w192
-
-        /*for(int b = 0; b < animationStoreWalk.length; b++)
-            animationStoreWalk[b] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(walkAnimationAddress)));*/
+    public boolean isWindowActivation() {
+        return windowActivation;
     }
 
-    public void paintComponent(Graphics graphics) {
-        posiotionX += movement.getHorizontalMovement();
-        posiotionY += movement.getVertiqalMovement();
-        super.paintComponent(graphics);
+    public void setMoving(boolean moving) {
+        this.moving = moving;
+    }
+    public void setPosiotionX(int sp) {
+        this.posiotionX += sp;
+    }
+    public void setPosiotionY(int sp) {
+        this.posiotionY += sp;
+    }
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+    public void moveThePlayer(){ //TODO vypadá to hrozně, ale funguje, fixni to pls
+        stopEveryMove();
+            moving = false;
+            if (left && !right) {
+                setPosiotionX(-speed);
+                moving = true;
+            }
+            if (!left && right) {
+                setPosiotionX(speed);
+                moving = true;
+            }
+            if (up && !down) {
+                setPosiotionY(-speed);
+                moving = true;
+            }
+            if (!up && down) {
+                setPosiotionY(speed);
+                moving = true;
+
+        }
+    }
+    private void stopEveryMove(){
+        if(!windowActivation){
+            left = false;
+            right = false;
+            up = false;
+            down = false;
+        }
+    }
+    public BufferedImage changeView() {
+       moveThePlayer();
+        BufferedImage lastPlayerView;
+            if(moving){
+            lastPlayerView = walk.invoke();
+            if (right) {
+                sizeX = Math.abs(sizeX);
+            }
+             else if (left && sizeX > 0)
+                sizeX = -sizeX;
+        }else lastPlayerView = idle.invoke();
+        return lastPlayerView;
+    }
+    public void render(Graphics graphics){
         Graphics2D graphics2D = (Graphics2D) graphics;
-        graphics2D.drawImage(animationStoreIdle[0], posiotionX, posiotionY, sizeX, sizeY, null);
-    }
-    public BufferedImage updateAnimation() {
-        if(movement.getHorizontalMovement() != 0 || movement.getVertiqalMovement() != 0)
-            for(int a = 0; a < animationStoreWalk.length; a++)
-                return animationStoreWalk[a];
-        else
-            for(int b = 0; b < animationStoreIdle.length; b++)
-                return animationStoreIdle[b];
-        return null;
-
-        /*if (movement.isRight()) lastPlayerView = playerRight;
-        else if (movement.isLeft()) lastPlayerView = playerLeft;
-        return lastPlayerView;*/
+        graphics2D.drawImage(changeView(), posiotionX, posiotionY, sizeX, sizeY, null);
     }
     @Override
     public void update() {

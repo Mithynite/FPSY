@@ -1,20 +1,37 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
-public class GamePanel extends JPanel {
-    private int posiotionX = 200;
-    private int posiotionY = 200;
-    private int sizeX = 50;
-    private int sizeY = 70;
+public class GamePanel extends JPanel implements  SharedMethods {
+    private Game game;
+    private Window window;
+    private Inputs movement = new Inputs(this);
 
+    public Game getGame() {
+        return game;
+    }
+    public GamePanel(Game game) {
+        window = new Window(this);
+        initialize();
+        this.game = game;
+        addKeyListener(movement);
+    }
     public GamePanel() {
 
     }
-    private void initialize(){
-        Dimension size = new Dimension(1920, 1080);
-        setMinimumSize(size);
-        setMinimumSize(size);
-        setPreferredSize(size);
+    private void initialize() {
+        this.setBounds(0, 0, window.getWidth(), window.getHeight());
+    }
+    public void paintComponent(Graphics graphics){
+        super.paintComponent(graphics);
+        try {
+            game.render(graphics);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @Override
+    public void update() {
 
     }
 }
