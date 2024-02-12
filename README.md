@@ -1,5 +1,4 @@
-# FPSY
-Final Project Second Year
+# Ultimate Lumberjack
 
 Sources which I used so far:
 
